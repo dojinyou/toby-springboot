@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 class HelloController(
     val service: HelloService
 ) {
-    @GetMapping()
+    @GetMapping
     @ResponseBody
     fun hello(name: String): String {
         return service.sayHello(name)
