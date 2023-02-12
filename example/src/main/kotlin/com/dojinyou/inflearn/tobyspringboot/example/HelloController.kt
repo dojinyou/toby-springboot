@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RestController
 class HelloController(
     val service: HelloService
 ) {
+
     @GetMapping("/hello")
     fun hello(name: String): String {
+        if(name.isBlank()) {
+            throw IllegalArgumentException()
+        }
+
         return service.sayHello(name)
     }
 }
