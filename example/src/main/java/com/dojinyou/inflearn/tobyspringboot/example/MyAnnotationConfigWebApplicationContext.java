@@ -10,7 +10,6 @@ public class MyAnnotationConfigWebApplicationContext extends AnnotationConfigWeb
         super.onRefresh();
         var serverFactory = this.getBean(ServletWebServerFactory.class);
         var dispatcherServlet = this.getBean(DispatcherServlet.class);
-        dispatcherServlet.setApplicationContext(this);
 
         var webServer = serverFactory.getWebServer(servletContext -> {
                 servletContext.addServlet("dispatcherServlet", dispatcherServlet).addMapping("/*");
