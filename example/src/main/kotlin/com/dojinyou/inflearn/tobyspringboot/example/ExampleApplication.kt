@@ -22,6 +22,6 @@ class ExampleApplication {
 }
 
 fun main(args: Array<String>) {
-    MySpringApplication.runApplication(ExampleApplication::class, args)
+    runApplication<ExampleApplication>(*args)
 }
 

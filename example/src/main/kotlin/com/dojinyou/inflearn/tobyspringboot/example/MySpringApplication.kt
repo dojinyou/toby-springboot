@@ -1,15 +1,12 @@
 package com.dojinyou.inflearn.tobyspringboot.example
 
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-import kotlin.reflect.KClass
 
 class MySpringApplication {
+}
 
-    companion object {
-        fun<T: Any> runApplication(classApplication: KClass<T>, vararg args: Array<String>) {
-            val applicationContext: AnnotationConfigWebApplicationContext = MyAnnotationConfigWebApplicationContext()
-            applicationContext.register(classApplication.java)
-            applicationContext.refresh()
-        }
-    }
+inline fun<reified T: Any> runApplication(vararg args: String) {
+    val applicationContext: AnnotationConfigWebApplicationContext = MyAnnotationConfigWebApplicationContext()
+    applicationContext.register(T::class.java)
+    applicationContext.refresh()
 }
