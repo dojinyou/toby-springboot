@@ -1,6 +1,5 @@
 package com.dojinyou.inflearn.tobyspringboot.example
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -13,5 +12,14 @@ class HelloServiceTest {
         val res = service.sayHello("Spring")
 
         assertThat(res).isEqualTo("Hello Spring")
+    }
+
+    @Test
+    fun helloDecorator() {
+        val service = HelloDecorator(SimpleHelloService())
+
+        val res = service.sayHello("Spring")
+
+        assertThat(res).isEqualTo("* Hello Spring *")
     }
 }
