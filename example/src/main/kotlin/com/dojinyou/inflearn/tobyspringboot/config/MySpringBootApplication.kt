@@ -1,4 +1,4 @@
-package com.dojinyou.inflearn.tobyspringboot.example
+package com.dojinyou.inflearn.tobyspringboot.config
 
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -7,4 +7,5 @@ import org.springframework.context.annotation.Configuration
 @Target(AnnotationTarget.CLASS)
 @Configuration
 @ComponentScan
+@EnableMyAutoConfiguration
 annotation class MySpringBootApplication

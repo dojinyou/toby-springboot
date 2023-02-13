@@ -1,22 +1,15 @@
-package com.dojinyou.inflearn.tobyspringboot.example
+package com.dojinyou.inflearn.tobyspringboot.config.autoconfig
 
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.web.servlet.DispatcherServlet
-
 
 @Configuration
-class Config {
+class TomcatWebServerConfig {
 
     @Bean
     fun servletWebServerFactory(): ServletWebServerFactory {
         return TomcatServletWebServerFactory()
-    }
-
-    @Bean
-    fun dispatcherServlet(): DispatcherServlet {
-        return DispatcherServlet()
     }
 }
