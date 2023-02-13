@@ -7,4 +7,4 @@ import org.springframework.context.annotation.Configuration
 @Target(AnnotationTarget.CLASS)
 @Configuration
 @ComponentScan
-annotation class MySpringBootAnnotation
+annotation class MySpringBootApplication
