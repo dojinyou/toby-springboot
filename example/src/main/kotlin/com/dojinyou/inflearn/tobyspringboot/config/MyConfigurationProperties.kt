@@ -1,9 +1,8 @@
 package com.dojinyou.inflearn.tobyspringboot.config
 
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.CLASS)
-@Configuration
-annotation class MyAutoConfiguration {
-}
+@Component
+annotation class MyConfigurationProperties

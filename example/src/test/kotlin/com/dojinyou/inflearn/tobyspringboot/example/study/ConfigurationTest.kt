@@ -43,7 +43,7 @@ class ConfigurationTest {
             }
         }
 
-        @Configuration(proxyBeanMethods = false)
+        @Configuration
         class MyConfig {
             @Bean
             fun common(): Common {

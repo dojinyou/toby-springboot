@@ -9,11 +9,14 @@ import org.springframework.http.MediaType
 
 class HelloApiTest {
 
+	private val contextPath = "/api"
+	private val port = 8888
+
 	@Test
 	fun contextLoads() {
 		val rest = TestRestTemplate()
 
-		val res = rest.getForEntity("http://localhost:8080/hello?name={name}", String::class.java, "Spring")
+		val res = rest.getForEntity("http://localhost:$port$contextPath/hello?name={name}", String::class.java, "Spring")
 
 		assertThat(res.statusCode).isEqualTo(HttpStatus.OK)
 		assertThat(res.headers[HttpHeaders.CONTENT_TYPE]!!.first()).startsWith(MediaType.TEXT_PLAIN_VALUE)
@@ -25,7 +28,7 @@ class HelloApiTest {
 	fun failApiTest() {
 		val rest = TestRestTemplate()
 
-		val res = rest.getForEntity("http://localhost:8080/hello?name={name}", String::class.java, "")
+		val res = rest.getForEntity("http://localhost:$port$contextPath/hello?name={name}", String::class.java, "")
 
 		assertThat(res.statusCode).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR)
 	}
