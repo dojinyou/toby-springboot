@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.core.annotation.AnnotationUtils
 import org.springframework.core.env.Environment
 
-@MyAutoConfiguration
+@MyAutoConfiguration()
 class PropertyPostProcessorConfig {
 
     companion object {
@@ -16,10 +16,12 @@ class PropertyPostProcessorConfig {
         fun propertyPostProcessor(env: Environment): BeanPostProcessor {
             return object: BeanPostProcessor {
                 override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
-                    println("beanName: $beanName, env: $env")
-                    AnnotationUtils.findAnnotation(bean.javaClass, MyConfigurationProperties::class.java) ?: return bean
+                    val annotation = AnnotationUtils.findAnnotation(bean.javaClass, MyConfigurationProperties::class.java) ?: return bean
 
-                    return Binder.get(env).bindOrCreate("", bean.javaClass)
+                    val attrs = AnnotationUtils.getAnnotationAttributes(annotation)
+                    val prefix = attrs["prefix"].toString()
+
+                    return Binder.get(env).bindOrCreate(prefix, bean.javaClass)
                 }
             }
         }

@@ -1,6 +1,7 @@
 package com.dojinyou.inflearn.tobyspringboot.config.autoconfig
 
 import com.dojinyou.inflearn.tobyspringboot.config.ConditionalMyOnClass
+import com.dojinyou.inflearn.tobyspringboot.config.EnableMyConfigurationProperties
 import com.dojinyou.inflearn.tobyspringboot.config.MyAutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Bean
 
 @MyAutoConfiguration
 @ConditionalMyOnClass(value = "org.apache.catalina.startup.Tomcat")
+@EnableMyConfigurationProperties(ServerProperties::class)
 class TomcatWebServerConfig {
 
     @Bean("tomcatWebServerFactory")
@@ -17,7 +19,7 @@ class TomcatWebServerConfig {
         val factory = TomcatServletWebServerFactory()
         println("properties: $serverProperties")
         factory.contextPath = serverProperties.contextPath
-        factory.port = serverProperties.port
+        factory.port = serverProperties.port.toInt()
 
         return factory
     }
