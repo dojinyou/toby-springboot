@@ -1,5 +1,0 @@
-com.dojinyou.inflearn.tobyspringboot.config.autoconfig.DataSourceConfig
-com.dojinyou.inflearn.tobyspringboot.config.autoconfig.PropertyPostProcessorConfig
-com.dojinyou.inflearn.tobyspringboot.config.autoconfig.DispatcherServletConfig
-com.dojinyou.inflearn.tobyspringboot.config.autoconfig.TomcatWebServerConfig
-com.dojinyou.inflearn.tobyspringboot.config.autoconfig.JettyWebServerConfig

@@ -4,9 +4,10 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.jdbc.core.JdbcTemplate
 
-@HelloBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class MemberRepositoryTest {
 
     @Autowired
@@ -26,7 +27,8 @@ class MemberRepositoryTest {
 
     @Test
     fun findMemberFailed() {
-        Assertions.assertThat(memberRepository.findMember(name)).isNull()
+        val newName = "newName"
+        Assertions.assertThat(memberRepository.findMember(newName)).isNull()
     }
 
 
