@@ -14,4 +14,8 @@ class HelloDecorator(
         val response = helloService.sayHello(name)
         return "* $response *"
     }
+
+    override fun countOf(name: String): Int {
+        return helloService.countOf(name)
+    }
 }

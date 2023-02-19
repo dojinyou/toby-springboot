@@ -6,11 +6,14 @@ import org.junit.jupiter.api.Test
 
 class HelloControllerTest {
 
+    private val helloServiceStub = object : HelloService {
+        override fun sayHello(name: String) = name
+        override fun countOf(name: String): Int = 0
+    }
+
     @Test
     fun simpleHelloController() {
-        val controller = HelloController(object : HelloService {
-            override fun sayHello(name: String) = name
-        })
+        val controller = HelloController(helloServiceStub)
 
         val name = "Spring"
         val res = controller.hello(name)
@@ -21,9 +24,7 @@ class HelloControllerTest {
 
     @Test
     fun failHelloController() {
-        val controller = HelloController(object : HelloService {
-            override fun sayHello(name: String) = name
-        })
+        val controller = HelloController(helloServiceStub)
         val name = ""
         Assertions.assertThatThrownBy {
             controller.hello(name)

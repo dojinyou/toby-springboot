@@ -16,4 +16,13 @@ class HelloController(
 
         return service.sayHello(name)
     }
+
+    @GetMapping("/count")
+    fun countOf(name: String): Int {
+        if(name.isBlank()) {
+            throw IllegalArgumentException()
+        }
+
+        return service.countOf(name)
+    }
 }
